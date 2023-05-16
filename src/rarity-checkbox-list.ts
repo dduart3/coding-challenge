@@ -5,7 +5,6 @@ export class RarityCheckboxList extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    
   }
 
   set rarities(value: Rarity[]) {
@@ -24,23 +23,9 @@ export class RarityCheckboxList extends HTMLElement {
              :host * {
                   box-sizing: border-box;
              }
-            
-            .blog-posts .posts {
-              padding: 0 20px;
-              display: grid;
-              grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-              grid-auto-rows: 1fr;
-              grid-gap: 25px;
-              --blog-post-width: auto;
-              --blog-post-height: 100%;
-              --blog-post-thumb-bg: #3d5063;
-            }
-            
-            
         </style>
       `;
   }
-
 
   render() {
     if (this.shadowRoot) {

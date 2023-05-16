@@ -5,35 +5,34 @@ export class RarityCheckbox extends HTMLElement {
   color = "";
   value = "";
   checked = false;
-  
 
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    
   }
 
-  
   static get observedAttributes() {
-    return ["name", "color", "value"];
+    return ["name", "color", "value", "checked"];
   }
 
   connectedCallback() {
     this.render();
-    
+
     //toggle checkbox function
-    this.shadowRoot?.addEventListener('click', (event)=>{
+    this.shadowRoot?.addEventListener("click", (event) => {
       event.preventDefault();
-      this.checked = !this.checked
+      this.checked = !this.checked;
       this.render();
-      
+
       try {
-        const rarityCheckboxChangeEvent = new Event(rarityCheckboxChangeEventName);
+        const rarityCheckboxChangeEvent = new Event(
+          rarityCheckboxChangeEventName
+        );
         document.dispatchEvent(rarityCheckboxChangeEvent);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-    })
+    });
   }
 
   attributeChangedCallback(name: string, oldValue: string, newValue: string) {
@@ -122,7 +121,9 @@ export class RarityCheckbox extends HTMLElement {
   get template() {
     return /*html*/ `
     <div class="rarity-checkbox-container">
-      <input type="checkbox" id=${this.value} name=${this.name} ${this.checked? "checked": ""}>
+      <input type="checkbox" id=${this.value} name=${this.name} ${
+      this.checked ? "checked" : ""
+    }>
       <span class="check"></span>
       <label for=${this.name}>${this.name}</label>
     </div>

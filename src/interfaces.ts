@@ -5,5 +5,5 @@ export interface Rarity {
 
 export interface RarityCheckboxInfo {
     name: string | null | undefined;
-    checked: boolean; 
+    checked: boolean | null | undefined;
 }
